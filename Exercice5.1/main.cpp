@@ -19,62 +19,41 @@ Cette partie doit afficher le nombre de coups qui ont été nécessaire pour trouve
 */
 
 
-enum class GameState {
 
-	INIT,
-	PLAY,
-	END,
-	EXIT
-
-};
-
-int GenerateMysteryNumber(int& mystery) {
-	mystery = rand() % 101;
-	return mystery;
-}
 
 int main() {
-
 	
-	GameState gameState = GameState::INIT;
-	unsigned int mysteryNumber;
+
+	int GenerateMysteryNumber; // Nombre aléatoire de l'ordi
+	int mysteryNumber; 
 	int nbrTurns = 0;
 	
 	srand(time(NULL));
+	GenerateMysteryNumber = rand() % 101;
 
-	while (gameState != GameState::EXIT);
+	std::cout << "Game : guess the number \n";
+
+
+	do
 	{
-		
-		std::cout << "Enter a number between 0 and 100";
+		std::cout << "Enter a number between 0 and 100 \n";
 		std::cin >> mysteryNumber;
-		
-		GenerateMysteryNumber;
+		nbrTurns++;
 
-		switch (gameState) 
-		{
-		case GameState::INIT:
+			if (mysteryNumber < GenerateMysteryNumber)
+			{
+				std::cout << "Higher \n";
+			}
+			else if (mysteryNumber > GenerateMysteryNumber) 
+			{
+				std::cout << "Lower \n";
+			}
+			else 
+			{
+				std::cout << "This is the correct number \n";
+			}
 
-			
-			gameState = GameState::PLAY;
-			break;
-
-		case GameState::PLAY:
-			/*
-				
-			*/
-			break;
-
-		case GameState::END:
-			/*
-				
-			*/
-			break;
-
-		case GameState::EXIT:
-			break;
-		}
-	}
-
+	} while (mysteryNumber != GenerateMysteryNumber);
 	
 	system("pause");
 	return EXIT_SUCCESS;
